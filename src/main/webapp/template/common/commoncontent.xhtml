@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"       
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j"      
+      xmlns:r="http://richfaces.org/rich"
+
+      dir="ltr">
+    <ui:composition >
+        <f:view>
+            <h:form id="commonfrm">
+                <r:panel id = "commonpanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                    <h:panelGrid columns="1" styleClass="custcommoncontent">
+                        <h:outputText escape="false" value=
+                                      "Elegant System software has three modules which are named Elegant Inventory, Elegant Accounting and Elegant Payroll. All elegant modules are 
+                                      &lt;b&gt;Downloadable for Free and are Evaluation modules for 30 days. &lt;/b&gt;click the Download Button below to try the software which is internet ready.
+                                      There is no database available in the setup as the product is connecting to the central database server which requires you to have a internet connection while loggin in to the elegant module. Users are required to &lt;b&gt;register&lt;/b&gt; 
+                                      for downloading the free elegant module setups and for running the elegant module from their laptops or desktops or tablets. Once registered the user can use his credentials to &lt;b&gt;SignIn&lt;/b&gt; to the elegant server, 
+                                      and he / she is free to create  new customers, suppliers, products and enter purchases, invoices or returns. 
+                                      The entered data is viewable as reports or bills or consoildated reports from entered purchase, sale, returns of material. 
+                                      Customisation of reports or consolidations is possible just before viewing,printing or exporting 
+                                      the report. &lt;br&gt;&lt;/br&gt;
+                                      &lt;b&gt;NEWLY ADDED AUDITING FEATURE &lt;/b&gt;is being implemented in each elegant module and is available on demand for a user SignIn.
+                                      Please walk through the &lt;b&gt; Features&lt;/b&gt;  page for a detailed known how about the system before using the modules. The accounting module and payroll module are under update and test and are temporarily unavailable for download."/>
+
+                        <h:panelGrid columns="3" >
+                            <h:panelGrid >
+                                <a4j:commandButton id="invbutton" value="Inventory"   
+                                                   action="#{custNavigation.downloadInvPage()}" rendered="true" 
+                                                   onclick="this.disabled = true" oncomplete="document.getElementById('commonfrm:invbutton').disabled=false" 
+                                                   styleClass="myButton">
+                                </a4j:commandButton>    
+                            </h:panelGrid>
+                            <h:panelGrid >
+                                <a4j:commandButton id="accbutton" value="Accounting"   
+                                                   action="#{custNavigation.downloadAccPage()}" disabled="true"
+                                                   onclick="this.disabled = true" oncomplete="document.getElementById('commonfrm:accbutton').disabled=false" 
+                                                   styleClass="myButton">
+                                </a4j:commandButton>    
+                            </h:panelGrid>
+                            <h:panelGrid >
+                                <a4j:commandButton id="payrollbutton" value="PayRoll"   
+                                                   action="#{custNavigation.downloadPayPage()}" disabled="true"
+                                                   onclick="this.disabled = true" oncomplete="document.getElementById('commonfrm:payrollbutton').disabled=false" 
+                                                   styleClass="myButton">
+                                </a4j:commandButton>    
+                            </h:panelGrid>
+                        </h:panelGrid>
+
+                        <h:outputText escape="false" value="All Elegant System software modules are downloadable for free, there are no setup fees, no seat licenses, no long-term commitments, 
+                                      and no hidden fees or surprises. You get a enterprise internet ready powerful solution for your business 
+                                      for a low monthly rate based on how many users you have,
+                                      and you can run it from your desktop or laptop or tablet by installing the  downloaded setup. 
+                                      &lt;br&gt;&lt;/br&gt;If this sounds good to be true, then just check out our elegant module Features page for a detailed view and description of the individual module, also the Benefits page and see if you don’t agree!"/>
+                    </h:panelGrid>
+                </r:panel>                    
+            </h:form>                                        
+        </f:view>
+    </ui:composition>
+</html>

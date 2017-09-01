@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j"            
+      xmlns:r="http://richfaces.org/rich"            
+      xmlns:f="http://java.sun.com/jsf/core"                   
+      dir="ltr">
+
+    <ui:composition>
+        <r:panel id = "headerpanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+            <h:form id="headerfrm">
+                <h:panelGrid width="100%">
+                    <a4j:poll id="poll" interval="1000" enabled="true" render="custToday,custviews,generalBroadCast" status="none" rendered="#{custNavigation.pollEnabled}"/>
+                    <a4j:poll id="poll1" interval="20000" enabled="true" render="bannerimage" status="none" rendered="#{custNavigation.pollEnabled}"/>
+                    <h:panelGroup>
+                        <h:commandLink id="appimage" action="#{custNavigation.homePage()}" >
+                            <h:graphicImage url="#{custNavigation.appImage}" styleClass="appimg"/>
+                            <r:tooltip id="tt15" layout="block" showDelay="2000">
+                                <span ><b>Home Page</b></span>
+                            </r:tooltip>
+                        </h:commandLink>
+                        <h:outputText value="#{custNavigation.appName}" styleClass="custheadertext"/>                            
+                        <h:commandLink id="tripleclient" onclick ="window.open('#{custNavigation.tripleClickURL}', '_blank')" >
+                            <h:graphicImage id="bannerimage" url="#{custNavigation.tripleclickImage}" styleClass="addvtimg" />
+                            <r:tooltip id="tt16" layout="block" showDelay="2000">
+                                <span ><b>Work from Home and Earn</b></span>
+                            </r:tooltip>
+
+                        </h:commandLink>                    
+                        
+                    </h:panelGroup>                    
+                    <h:panelGroup>
+                        <a4j:commandLink id="loginlink" value="#{custNavigation.loggedIn}"  
+                                         accesskey="s"
+                                         rendered="#{custNavigation.loggedIn=='SignIn'}"
+                                         action="#{custNavigation.loginPage()}" >
+                            <r:tooltip id="tt51" layout="block" showDelay="2000">
+                                <span ><b>Click to #{custNavigation.loggedIn} or Press Alt+S</b></span>
+                            </r:tooltip>
+
+                        </a4j:commandLink>    
+                        <a4j:commandLink id="signout" value="#{custNavigation.loggedIn}" 
+                                         accesskey="s"
+                                         rendered="#{custNavigation.loggedIn!='SignIn'}"
+                                         onclick="doSignOut();"
+                                         >
+
+                            <r:tooltip id="tt5" layout="block" showDelay="2000">
+                                <span ><b>Click to #{custNavigation.loggedIn} or Press Alt+S</b></span>
+                            </r:tooltip>
+                        </a4j:commandLink>     
+                        <h:outputText value=" #{custNavigation.loginName}" rendered ="#{not empty custNavigation.loginName}" />
+                        <h:outputText id = "custToday" value="#{custNavigation.date}" style="float:right"/>
+                    </h:panelGroup>
+                    <h:panelGroup>
+                        <a4j:commandLink id="newuserlink" value="Register" 
+                                         accesskey="r" 
+                                         render="newupanel"
+                                         action="#{custNavigation.newUserPage()}" >
+                            <r:tooltip id="tt17" layout="block" showDelay="2000">
+                                <span ><b>Click to #{custNavigation.loggedIn} or Press Alt+S</b></span>
+                            </r:tooltip>
+                        </a4j:commandLink>     
+
+                        
+                    </h:panelGroup>
+                </h:panelGrid>
+            </h:form>                                                
+        </r:panel>                    
+        <r:jQuery selector="#loginlink" event="click"
+                  query="doLogin();" />
+
+        <a4j:jsFunction name="doSignOut" status="none"  onbegin="#{r:component('logoutconfirmation')}.show()"/>
+
+        <r:popupPanel id="logoutconfirmation" modal="true" resizeable="false" autosized="true">
+            <f:facet name="header">
+                <h:outputText value="Logout #{custNavigation.loginName}" style="font-size: 14px; font-weight: bold"/>
+
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/Close-icon.png"
+                                style="cursor:pointer"
+                                onclick="#{r:component('logoutconfirmation')}.hide();
+                                return false;" />
+            </f:facet>
+            <h:form>
+                <r:panel id = "logoutpanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                    <h:outputText value="Are you sure to Sign Out?"
+                                  style="font-size: large;" />
+
+                    <h:panelGrid columns="2" style="height:45px">
+                        <a4j:commandButton id="yes" action="#{custNavigation.loginPage()}"
+                                           type="image" style="cursor:pointer;width:26px"
+                                           image="/images/ok-icon.png"
+                                           render="headerpanel"
+                                           onbegin="#{r:component('logoutconfirmation')}.hide();checkAndCloseBrowser()">
+                        </a4j:commandButton>
+
+                        <a4j:commandButton id="no" type="image" 
+                                           image="/images/cancel-icon.png"
+                                           onclick="#{r:component('logoutconfirmation')}.hide();
+                                return false;
+                                return false"
+                                           style="cursor:pointer;width:26px" />
+                    </h:panelGrid>
+                    <r:jQuery selector="#yes" event="mouseover"
+                              query="jQuery(this).stop().animate({width:'40px'})" />
+                    <r:jQuery selector="#yes" event="mouseout"
+                              query="jQuery(this).stop().animate({width:'24px'})" />
+
+                    <r:jQuery selector="#no" event="mouseover"
+                              query="jQuery(this).stop().animate({width:'40px'})" />
+                    <r:jQuery selector="#no" event="mouseout"
+                              query="jQuery(this).stop().animate({width:'24px'})" />
+
+                </r:panel>
+
+            </h:form>
+
+        </r:popupPanel>
+
+    </ui:composition>        
+
+</html>

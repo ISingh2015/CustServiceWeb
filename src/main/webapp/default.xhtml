@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"       
+      >
+
+    <h:head>
+        <title>Elegant Systems.</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+        <!-- enable full-screen mode -->  
+        <meta name="apple-mobile-web-app-capable" content="yes"/>  
+        <!-- controls the appearance of the status bar in full-screen mode -->  
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>          
+        <!--        <link rel="stylesheet" type="text/css" href="resources/css/styleie.css" media="screen" />-->
+        <h:outputStylesheet name="styleie.css" library="css"/>
+        <h:outputScript name="jquery.js" target="head"/>
+        <h:outputScript name="custservice.js" library="js" target="head"/>        
+    </h:head>
+    <h:body onload="disableRightClick()" >
+
+
+        <ui:insert name="header" >
+            <ui:include src="/template/common/headernew.xhtml"/>
+            <ui:include src="/template/common/jqueryids.xhtml"/>
+        </ui:insert>
+        <ui:insert name="toolbar">
+            <ui:include src="/template/common/toolBar.xhtml"/>
+        </ui:insert>
+        <ui:insert name="content" >
+            <ui:include src="/template/common/commoncontent.xhtml"/> 
+        </ui:insert>
+
+        <ui:insert name="footer" >
+            <ui:include src="/template/common/footer.xhtml"/>
+            <ui:include src="/template/common/status.xhtml"/>            
+        </ui:insert>
+    </h:body>
+</html>

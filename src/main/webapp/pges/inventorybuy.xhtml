@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"       
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:r="http://richfaces.org/rich"      
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form>            
+                <r:panel id = "bebefitspanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                    <h:panelGrid columns="1" styleClass="custcommoncontent" style="padding: 5%" rendered="#{loginBean.userLoggedIn and !custNavigation.mobileDevice}">
+                        <f:facet name="header">Elegant Inventory Purchase </f:facet>
+
+                        <h:outputText escape="false" value="Inventory Buy Page coming soon ..." style="font-size: 18px; font-weight: bold"/>
+                        <h:outputText escape="false" value="#{inventoryBuy.buyDesc}" style="padding: 5%"/>
+                    </h:panelGrid>
+                    <h:outputText value="Invalid Download or Page found. Please click the HOME button or exit and reload the Application.." rendered="#{!loginBean.userLoggedIn and !custNavigation.mobileDevice}" style="font-size: 16px;color: red"/>
+                </r:panel>                        
+            </h:form>                    
+        </ui:define>
+    </ui:composition>
+</html>

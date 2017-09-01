@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j" 
+      xmlns:r="http://richfaces.org/rich" 
+      >
+    <a4j:status id="custStatus" onstart="#{r:component('waitPanel')}.show()" onstop="#{r:component('waitPanel')}.hide()">
+        <r:popupPanel id="waitPanel" autosized="true" modal="true" rendered="true">
+            <h:panelGrid columns="2" >
+                <h:outputText value="Please wait ..."/>                
+                <h:graphicImage value="/images/ajax-loader.gif" style="cursor:pointer"/>
+            </h:panelGrid>
+        </r:popupPanel>
+    </a4j:status>    
+
+</html>

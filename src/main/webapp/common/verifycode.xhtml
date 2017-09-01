@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:gmaps4jsf="http://code.google.com/p/gmaps4jsf/"      
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j"      
+      >
+
+    <h:inputSecret id="rpwdField" value="#{loginBean.loginPasswordReset}" maxlength="35" onkeypress="return charsAndNumbers(event);" style="font-size: 14px;font-weight: bold;width:300px"/>
+    <a4j:mediaOutput element="img" cacheable="false" createContent="#{mediaBean.paint}" mimeType="image/jpeg"/>
+    <h:outputText value="Enter the Text from the Box below" style="font-size: 18px"/>
+    <h:inputText value="#{contacts.verifyCode}" style="font-size: 18px" maxlength="4" onkeypress=" return numbersOnly(event);" /> 
+
+</html>

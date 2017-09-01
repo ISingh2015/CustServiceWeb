@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:r="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form id="newufrm">            
+                <h:panelGrid style="margin: auto;">
+                    <r:panel id = "newupanel" bodyClass="rich-laguna-panel,resizepanel" style="border:none">
+                        <h:outputLabel value="NEW REGISTRATION" style="text-align: center;width: 100%;font-size: 18px "/>
+                        <h:outputLabel id="errormsg" value="#{loginBean.errorMsg}" style="color:red;font-size: 16px; font-weight: bold" />
+                        <r:focus/>
+                        <fieldset>
+                            <legend><b>Login Info</b></legend> 
+                            <h:panelGrid columns="2"   style="margin: auto;">
+                                <h:outputLabel value="Name : "/>
+                                <h:inputText id = "txt1" value="#{newUser.name}" maxlength="35" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" styleClass="inputrichtext" style="width:250px">
+                                </h:inputText>
+
+                                <h:outputLabel value="Login Name : "/>
+                                <h:inputText value="#{newUser.loginName}" maxlength="35" 
+                                             onkeypress="return charsAndNumbers(event);" styleClass="inputrichtext" style="width:250px"/>
+
+                                <h:outputLabel value="Login pwd  : "/>
+                                <h:inputSecret value="#{newUser.loginPwd}" maxlength="35" 
+                                               onkeypress="return charsAndNumbers(event);" 
+                                               styleClass="inputrichtext" style="width:250px" >
+                                </h:inputSecret>    
+                                <h:outputLabel value="Confirm Login pwd  : "/>
+                                <h:inputSecret value="#{newUser.confirmLoginPwd}" maxlength="35" 
+                                               onkeypress="return charsAndNumbers(event);" 
+                                               styleClass="inputrichtext" style="width:250px" >
+                                </h:inputSecret>    
+
+                            </h:panelGrid> 
+                        </fieldset>                            
+                        <fieldset>
+                            <legend><b>Address</b></legend>                            
+                            <h:panelGrid columns="4" >
+                                <h:outputLabel value="Email: " />
+                                <h:inputText value="#{newUser.emaiil}" maxlength="35" onkeypress="return emailValidate(event);" styleClass="inputText" style="width:250px"/>
+
+                                <h:outputLabel value="Address : " />
+                                <h:inputText value="#{newUser.address}" maxlength="35" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" styleClass="inputText" style="width:250px"/>
+                                <h:outputLabel value="City    : " />
+                                <h:inputText value="#{newUser.city}" maxlength="35" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" styleClass="inputText" style="width:250px"/>
+                                <h:outputLabel value="State   : "/>
+                                <h:inputText value="#{newUser.state}" maxlength="35" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" styleClass="inputText" style="width:250px"/>
+                                <h:outputLabel value="Pin Code:" />
+                                <h:inputText value="#{newUser.pinCode}" maxlength="35" 
+                                             onkeypress="return numbersOnly(event);" styleClass="inputText" style="width:250px"/>
+
+                                <h:outputLabel value="Country: "/>
+                                <h:inputText value="#{newUser.country}" maxlength="35" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" styleClass="inputText" style="width:250px"/>
+
+                                <h:outputLabel value="Tel No : "/>
+                                <h:inputText value="#{newUser.telNo}" maxlength="35" onkeypress="return telephoneNo(event);" styleClass="inputText" style="width:250px"/>
+
+                                <h:outputLabel value="Mobile : "/>
+                                <h:inputText value="#{newUser.mobileNo}" maxlength="35" onkeypress="return telephoneNo(event);" styleClass="inputText" style="width:250px"/>
+                            </h:panelGrid>    
+                        </fieldset>                            
+                        <fieldset>
+                            <legend><b>Save Options</b></legend>
+                            <h:panelGrid id="captcha" columns="2">
+                                <a4j:mediaOutput element="img" cacheable="false" createContent="#{mediaBean.paint}" mimeType="image/jpeg"/>
+                                <h:outputText value="Enter the Text from the Box below" style="font-size: 18px"/>
+                            </h:panelGrid>
+                            <h:inputText value="#{custNavigation.verifyCode}" style="font-size: 18px; width:50px" maxlength="4" onkeypress=" return numbersOnly(event);" /> 
+                            
+                            <h:panelGrid columns="2">
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "savebutton" value="Save" 
+                                                       accesskey="s"
+                                                       render="newupanel, errormsg"  
+                                                       action="#{newUser.saveUser()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onbegin="this.disabled = true" 
+                                                       oncomplete="document.getElementById('newufrm:savebutton').disabled=false" 
+
+                                                       style="width: 80px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                        <r:tooltip id="tt1" layout="block" showDelay="2000">
+                                            <span ><b>Click to Save or Press Alt+S</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "cancelsavebutton" value="Cancel" 
+                                                       accesskey="c"
+                                                       render="newupanel, errormsg"  
+                                                       action="#{newUser.cancelSave()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onbegin="this.disabled = true" 
+                                                       oncomplete="document.getElementById('newufrm:cancelsavebutton').disabled=false" 
+                                                       style="width: 80px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                        <r:tooltip id="tt2" layout="block" showDelay="2000">
+                                            <span ><b>Click to Cancel create or Press Alt+C</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                            </h:panelGrid>
+                        </fieldset>   
+                    </r:panel>
+                </h:panelGrid>    
+            </h:form>            
+        </ui:define>
+
+    </ui:composition>
+
+</html>

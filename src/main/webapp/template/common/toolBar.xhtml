@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:a4j="http://richfaces.org/a4j"      
+      xmlns:r="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"             
+      dir="ltr">
+    <ui:composition >
+        <h:form id="menufrm"> 
+            <r:toolbar height="20%" width="100%" >
+                <r:menuItem mode="ajax" label="Home" action="#{custNavigation.homePage()}" id = "home" >
+                    <f:facet name="icon">
+                        <h:graphicImage url="#{custNavigation.menuImage[0]}"  styleClass="menuimage" />
+                    </f:facet>                    
+                </r:menuItem>
+                <r:dropDownMenu label="Features"  showEvent="mouseover" >
+                    <r:menuItem mode="ajax" label="Inventory Module" action="#{custNavigation.inventoryPage()}" >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[2]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                    <r:menuItem mode="ajax" label="Accounting Module" action="#{custNavigation.accountingPage()}" disabled="true" >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[3]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                    <r:menuItem mode="ajax" label="Payroll Module" action="#{custNavigation.payrollPage()}" disabled="true"  >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[4]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                </r:dropDownMenu>
+                <r:menuItem mode="ajax" label="Benefits" action="#{custNavigation.benefitsPage()}" id = "benefits" >
+                    <f:facet name="icon">
+                        <h:graphicImage url="#{custNavigation.menuImage[5]}"  styleClass="menuimage" />
+                    </f:facet>                    
+
+                </r:menuItem>    
+                <r:dropDownMenu label="Purchase"  showEvent="mouseover" >
+                    <r:menuItem mode="ajax" label="Inventory Module" action="#{custNavigation.inventoryBuyPage()}" >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[2]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                    <r:menuItem mode="ajax" label="Accounting Module" action="#{custNavigation.accountingBuyPage()}" disabled="true" >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[3]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                    <r:menuItem mode="ajax" label="Payroll Module" action="#{custNavigation.payrollBuyPage()}" disabled="true" >
+                        <f:facet name="icon">
+                            <h:graphicImage url="#{custNavigation.menuImage[4]}"  styleClass="menuimage" />
+                        </f:facet>                    
+
+                    </r:menuItem>    
+                </r:dropDownMenu>
+
+                <r:menuItem mode="ajax" label="Contact" action="#{custNavigation.contactPage()}" id = "contactme" >
+                    <f:facet name="icon">
+                        <h:graphicImage url="#{custNavigation.menuImage[6]}"  styleClass="menuimage" />
+                    </f:facet>                    
+
+                </r:menuItem>
+            </r:toolbar>                 
+            <h:outputText id="generalBroadCast" value="#{custNavigation.generalMessage}" style="text-align: center;width:100%;font-size: 18px; font-weight: bold; color:goldenrod;"/>
+        </h:form>            
+    </ui:composition>
+</html>

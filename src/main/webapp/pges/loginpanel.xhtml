@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:r="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form id="loginfrm">            
+                <h:panelGrid style="width:40%;margin: auto">
+
+
+                    <r:panel id = "loginpanel" bodyClass="rich-laguna-panel-no-header" >
+                        <f:facet name="header" >Elegant Admin Console </f:facet>
+
+                        <h:outputLabel id="errormsg" value="#{loginBean.errorMsg}" style="font-size: 12px; font-weight: bold;color:red" />
+
+                        <r:focus/>
+                        <h:panelGrid columns="2"  rowClasses="loginrow" >
+                            <h:outputText value="Login Name : "/>
+                            <h:inputText id = "namefield" value="#{loginBean.loginName}" maxlength="35"  style="font-size: 14px;font-weight: bold;width:300px" 
+                                         onkeypress="return charsAndNumbers(event);" 
+                                         onkeyup="if (event.keyCode === 13)
+                                                     document.getElementById('loginfrm:loginbutton').click();"/>
+                            <h:outputText value="Login Pwd  : "/>
+                            <h:inputSecret id = "passwdfield" value="#{loginBean.loginPassword}" maxlength="35"  style="font-size: 14px;font-weight: bold;width:300px" 
+                                           onkeypress="return charsAndNumbers(event);" 
+                                           onkeyup="if (event.keyCode === 13)
+                                                       document.getElementById('loginfrm:loginbutton').click();"/>
+                            <h:panelGrid columns="2">
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "loginbutton" value="#{custNavigation.loggedIn}" 
+                                                       accesskey="l"
+                                                       render="loginview, errormsg"  
+                                                       action="#{loginBean.doLogin()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onkeyup="charsAndNumbers(event);" 
+                                                       onbegin="this.disabled = true" 
+                                                       oncomplete="document.getElementById('loginfrm:loginbutton').disabled=false;document.getElementById('headerfrm:loginlink').disabled=false" 
+                                                       style="width: 80px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                        <r:tooltip id="tt1" layout="block" showDelay="2000">
+                                            <span ><b>Click to Login or Press Alt+L</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "cancelbutton" value="Cancel" 
+                                                       accesskey="c"
+                                                       render="loginview, errormsg,headerpanel"  
+                                                       action="#{loginBean.doLoginCancel()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onkeyup="charsAndNumbers(event)" 
+                                                       onbegin="this.disabled = true" 
+                                                       oncomplete="document.getElementById('loginfrm:cancelbutton').disabled=false" 
+                                                       style="width: 80px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                        <r:tooltip id="tt2" layout="block" showDelay="2000">
+                                            <span ><b>Click to Cancel Login or Press Alt+C</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                            </h:panelGrid>
+                            <h:outputText value=" " />
+                        </h:panelGrid>
+                        <h:panelGrid columns="3"  >
+                            <a4j:commandLink value="Register New User" render="loginPanel" action="#{custNavigation.newUserPage()}"/>
+                            <a4j:commandLink value="Re-set Password" render="loginPanel" action="#{custNavigation.resetPage()}"/>
+                            <a4j:commandLink value="Help? Forgot Password" render="loginPanel" action="#{custNavigation.forgotPwdPage()}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <a4j:commandLink value="Login with Google" action="#" style="margin-right: 5%; font-size: 14px" rendered="false" />
+                            <a4j:commandLink value="Login with Linked In" action="#" style="margin-right: 5%; font-size: 14px" rendered="false"/>
+                        </h:panelGrid>
+
+                    </r:panel>
+                </h:panelGrid>                    
+            </h:form>            
+        </ui:define>
+    </ui:composition>
+
+</html>

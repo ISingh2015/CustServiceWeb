@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"       
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:r="http://richfaces.org/rich"      
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form>            
+                <r:panel id = "bebefitspanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                    <h:panelGrid columns="1" styleClass="custcommoncontent" style="padding: 5%">
+                        <f:facet name="header">Elegant Inventory Benefits</f:facet>
+
+                        <h:outputText escape="false" value="Benefits Page coming soon ..." style="font-size: 18px; font-weight: bold"/>
+                        <h:outputText escape="false" value="#{benefits.benefitsDesc}" style="padding: 5%"/>
+                    </h:panelGrid>
+                </r:panel>                        
+            </h:form>                    
+        </ui:define>
+
+    </ui:composition>
+</html>

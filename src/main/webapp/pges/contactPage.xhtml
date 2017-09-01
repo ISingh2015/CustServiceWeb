@@ -1,0 +1,105 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:gmaps4jsf="http://code.google.com/p/gmaps4jsf/"      
+      xmlns:f="http://java.sun.com/jsf/core"       
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:r="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"      
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <script type="text/javascript"
+                    src="https://maps.googleapis.com/maps/api/js?sensor=true">
+            </script>
+            <h:form id="contactsfrm">
+                <div align="center" >
+
+                    <h:panelGrid id = "contactspanel" columns="2" rowClasses="contactRows" styleClass="contactCol1,contactCol2" >
+                        <r:panel bodyClass="rich-laguna-panel-no-header" >
+
+                            <h:outputText value="Leave a Message" style="font-size: 18px;padding: 4%"/>
+                            <r:focus/>
+                            <h:panelGrid >
+                                <h:outputText value="Name" />
+                                <h:inputText id="nm" value="#{contacts.nameField}" size="35" styleClass="inputrichtext" 
+                                             style="width: 350px;height: 15px;" 
+                                             onkeypress="return charsAndNumbersAndSpace(event);" >
+                                </h:inputText>    
+                                <h:outputText value="Phone" />
+                                <h:inputText id="ph" value="#{contacts.phoneField}" size="35" styleClass="inputrichtext" 
+                                             style="width: 350px;height: 15px;"
+                                             onkeypress="return numbersOnly(event);" >
+                                </h:inputText>    
+                                <h:outputText value="Email" />
+                                <h:inputText id="em" value="#{contacts.emailField}" size="35" styleClass="inputrichtext" 
+                                             style="width: 350px;height: 15px;"
+                                             onkeypress="return emailValidate(event);">
+                                </h:inputText>    
+                                <h:outputText value="Your Messassge Here" style="font-size: 18px;padding: 4%"/>
+                                <r:editor id="remarks" 
+                                          value="#{contacts.remarks}" 
+                                          width="600" height="200"  >
+                                </r:editor>
+                            </h:panelGrid>
+                            <h:panelGrid id="captcha" columns="2">
+                                <a4j:mediaOutput element="img" cacheable="false" createContent="#{mediaBean.paint}" mimeType="image/jpeg"/>
+                                <h:outputText value="Enter the Text from the Box below" style="font-size: 18px"/>
+                            </h:panelGrid>
+                            <h:inputText id="contactsverifycode" value="#{custNavigation.verifyCode}" style="font-size: 18px;width:50px" maxlength="4" onkeypress=" return numbersOnly(event);" /> 
+
+                            <a4j:outputPanel id="contactsPanel1" >                        
+                                <h:panelGrid columns="2">
+                                    <h:panelGrid style="width: 100px;height: 50px">
+                                        <a4j:commandButton id="sb" value="Send Query"   style="width: 80px;height: 30px;"
+                                                           onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                           onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                            <r:tooltip id="tt12" layout="block" showDelay="2000">
+                                                <span ><b>Click to Send</b></span>
+                                            </r:tooltip>
+
+                                        </a4j:commandButton>    
+                                    </h:panelGrid>
+                                    <h:panelGrid style="width: 100px;">
+                                        <a4j:commandButton id="cb" value="Cancel"  style="width: 80px;height: 30px;"
+                                                           action="#{custNavigation.homePage()}" 
+                                                           onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                           onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                            <r:tooltip id="tt13" layout="block" showDelay="2000">
+                                                <span ><b>Click to Cancel</b></span>
+                                            </r:tooltip>
+
+                                        </a4j:commandButton>    
+
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                                <h:outputText value=" " />                                            
+                                <h:outputText id="error" value="#{contacts.message}" style="color:red;font-size: 16px;font-weight: bold" />
+                            </a4j:outputPanel>
+                            <r:jQuery selector="#sb" event="click"
+                                      query="sbclick()" />
+                            <a4j:jsFunction name="sbclick" action="#{custNavigation.sendEmail()}"
+                                            status="none"
+                                            onbegin="jQuery(#{r:element('contactspanel')}).fadeIn('8000');"
+                                            render="error" />
+                        </r:panel> 
+                        <r:panel id = "contactspanel2" bodyClass="rich-laguna-panel-no-header" style="width: auto;height: auto">
+                            <gmaps4jsf:map id="contactsMap" latitude="19.0200" longitude="73.0200" 
+                                           partiallyTriggered="true"  rendered="true"
+                                           zoom="14" jsVariable="contactMap"  
+                                           enableScrollWheelZoom="true" showDefaultControls="false"
+                                           type="google.maps.MapTypeId.ROADMAP">
+                                <gmaps4jsf:mapControl name="mapTypeControl"/>
+                                <gmaps4jsf:mapControl name="panControl" position="google.maps.ControlPosition.RIGHT_BOTTOM"/>
+                                <gmaps4jsf:mapControl name="zoomControl" 
+                                                      position="google.maps.ControlPosition.LEFT_BOTTOM" 
+                                                      controlStyle="google.maps.ZoomControlStyle.LARGE"/>          									
+                            </gmaps4jsf:map>
+                        </r:panel>
+
+                    </h:panelGrid>
+                </div>
+            </h:form>                            
+        </ui:define>
+    </ui:composition>
+
+</html>

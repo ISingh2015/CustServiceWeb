@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:r="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form id="forgotfrm">            
+                <h:panelGrid style="width:40%; margin: auto;">
+                    <r:panel id = "forgotpanel" bodyClass="rich-laguna-panel-no-header" >                    
+                        <f:facet name="header" >Elegant Admin Console [Forgot Password]</f:facet>
+
+                        <h:outputLabel id="errormsg" value="#{loginBean.errorMsg}" style="font-size: 12px; font-weight: bold;color:red"/>
+
+                        <r:focus/>
+                        <h:panelGrid columns="2"  rowClasses="loginrow">
+                            <h:outputText value="Login Name or Email Id: "/>
+                            <h:inputText id = "nmField" value="#{loginBean.loginName}" maxlength="35"  style="font-size: 14px;font-weight: bold;width:300px"
+                                         onkeypress="return charsAndNumbersAndAt()(event);" 
+                                         onkeyup="if (event.keyCode === 13) document.getElementById('forgotfrm:resetbutton').click();"/>
+                            <a4j:mediaOutput element="img" cacheable="false" createContent="#{mediaBean.paint}" mimeType="image/jpeg"/>
+                            <h:outputText value="Enter the Text from the Box below" style="font-size: 18px"/>
+                            <h:inputText value="#{custNavigation.verifyCode}" style="font-size: 18px;width:50px" maxlength="4" onkeypress=" return numbersOnly(event);" /> 
+
+                            <h:panelGrid columns="2">
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "emailpwdbutton" value="Send Email" 
+                                                       accesskey="r"
+                                                       render="resetPanel, errormsg, headerpanel"  
+                                                       action="#{loginBean.doforgotPwd()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onkeyup="charsAndNumbers(event)" 
+                                                       onclick="this.disabled = true" oncomplete="document.getElementById('forgotfrm:emailpwdbutton').disabled=false" 
+                                                       style="width: 110px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '110px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '120px', height: '40px'})">
+                                        <r:tooltip id="tt3" layout="block" showDelay="2000">
+                                            <span ><b>Click to Reset or Press Alt+R</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                                <h:panelGrid style="width: 100px;height: 50px">
+                                    <a4j:commandButton id = "cancelResetbutton" value="Cancel" render="errormsg"  
+                                                       accesskey="c"
+                                                       action="#{loginBean.doResetCancel()}" 
+                                                       styleClass="myButtonLogin" 
+                                                       onkeyup="charsAndNumbers(event)" 
+                                                       onclick="this.disabled = true" 
+                                                       oncomplete="document.getElementById('forgotfrm:cancelResetbutton').disabled=false" 
+                                                       style="width: 80px;height: 30px;"
+                                                       onmouseout="jQuery(this).stop().animate({width: '80px', height: '30px'})"
+                                                       onmouseover="jQuery(this).stop().animate({width: '90px', height: '40px'})">
+                                        <r:tooltip id="tt4" layout="block" showDelay="2000">
+                                            <span ><b>Click to Cancel Reset or Press Alt+C</b></span>
+                                        </r:tooltip>
+
+                                    </a4j:commandButton>    
+                                </h:panelGrid>                                
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+                    </r:panel>
+                </h:panelGrid>    
+            </h:form>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

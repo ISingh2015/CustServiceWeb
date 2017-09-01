@@ -1,0 +1,205 @@
+
+a { 
+    margin: 0%;
+    padding: 0%;
+    font-size:12px; 
+}
+a:hover { color : orange; }
+body {
+    /*text-shadow:0px 1px 0px blue;*/
+    width:fit-content;
+    /*font-size: 12px;*/
+    overflow: auto;
+    text-align: justify;
+    /*padding-bottom: 10%;*/
+    background-color: lightgoldenrodyellow;
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+}
+label {
+    text-align: left;
+}
+
+.myButton {
+    -moz-box-shadow: 3px 4px 0px 0px #1564ad;
+    -webkit-box-shadow: 3px 4px 0px 0px #1564ad;
+    box-shadow: 3px 4px 0px 0px #1564ad;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+    background:-moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+    background-color:#79bbff;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border:1px solid #337bc4;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    margin-top:10px;    
+    margin-left:75px;    
+    /*    font-family:Arial;*/
+    /*    font-family:Aquafina Script;
+        font-size:17px;
+        font-weight:bold;*/
+    padding:12px 44px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #528ecc;
+    cursor: pointer;
+}
+
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+.custfooter {
+    text-align: center;
+    background-color: lightslategrey;
+    vertical-align: middle;
+    width: 100%;
+    height:auto;
+    position: fixed;
+    bottom: 1%;
+    padding: 1%;
+    color: black;
+}
+
+.custheadertext {
+    text-align: center;
+    width: 100%;
+    top: 1%;
+    font-size: 40px;
+    font-weight: bold;
+    color: lightblue;
+}
+
+#custheaderdate{
+    width:50%;
+    font-size: 10px;
+    font-weight: bold;
+    float:right;
+}
+
+
+#custcommoncontent {
+    margin: auto;
+    display:block;
+    border:none;
+    border-collapse:collapse; 
+    table-layout:fixed; 
+    width:fit-content;
+    text-align: left;
+    word-wrap:break-word; 
+    vertical-align: top;
+}
+.aligncenter {
+    width:25%;
+    text-align: center;
+    font-size:24px;
+    font-weight:bold;
+}
+.appimg { 
+    float:left;
+    height:auto;
+    width: 10%;
+    border: none; 
+}
+.addvtimg { 
+    float:right;
+    height:111px;
+    width: 30%;
+    border: none; 
+}
+
+
+.menuimage {
+    width:15px;
+    height:auto;
+}
+
+
+.myButtonLogin {
+    -moz-box-shadow: 3px 4px 0px 0px #1564ad;
+    -webkit-box-shadow: 3px 4px 0px 0px #1564ad;
+    box-shadow: 3px 4px 0px 0px #1564ad;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5));
+    background:-moz-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-webkit-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-o-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    background:-ms-linear-gradient(top, #79bbff 5%, #378de5 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5',GradientType=0);
+    background-color:#79bbff;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    border:1px solid #337bc4;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    /*    margin-top:10px;    
+        margin-left:75px;    */
+    /*    font-family:Arial;*/
+    /*    font-family:Aquafina Script;
+        font-size:10px;
+        font-weight:bold;*/
+    padding:12px 44px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #528ecc;
+    cursor: pointer;
+}
+
+.myButtonLogin:active {
+    position:relative;
+    top:1px;
+}
+.inputText {
+    display:block;
+}
+.inputrichtext {
+    width:100%;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: bold;
+    -moz-box-sizing: border-box;    
+}
+.resizepanel{
+    width:100%;
+    box-sizing: border-box;
+}
+
+.invCol1 {
+    width:40%;
+}
+.invCol2 {
+    width:60%;
+}
+.contactCol1 {
+    width:50%;
+    float:left;
+    padding: 5%;
+    vertical-align: top;            
+
+}
+.contactCol2 {
+    width:50%;
+    float:right;
+    padding: 5%;
+    vertical-align: top;    
+}
+.contactRows {
+    text-align: left;
+}
+
+.downloadbutton {
+    width: 25%;height: 40%;cursor: pointer;
+    background: url('/images/downloadfile.png') no-repeat right;
+
+}
+

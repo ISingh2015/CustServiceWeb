@@ -1,0 +1,162 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j"      
+      xmlns:r="http://richfaces.org/rich"      
+      dir="ltr">
+    <ui:composition>
+        <h:panelGrid styleClass="custfooter">
+            <h:panelGroup >
+                <a4j:commandLink value="Terms and Conditions" style="color: white" >
+                    <r:tooltip id="tt7" layout="block" showDelay="2000">
+                        <span ><b>Display Terms and Conditions Window</b></span>
+                    </r:tooltip>
+                    <r:componentControl target="terms" operation="show">
+                        <a4j:param noEscape="true" value="event" />
+                        <r:hashParam>
+                            <f:param name="width" value="500" />
+                            <f:param name="height" value="300" />
+                            <f:param name="minWidth" value="300" />
+                            <f:param name="minHeight" value="150" />
+                            <a4j:param noEscape="true" name="left" value="(jQuery(window).width()/2)-250" />
+                            <a4j:param noEscape="true" name="top" value="(jQuery(window).height()/2)-150" />
+                        </r:hashParam>
+                    </r:componentControl>
+                </a4j:commandLink>    
+                <h:outputText value=" | " style="color: white"/>
+                <a4j:commandLink value="Privacy Policy" style="color: white" > 
+                    <r:tooltip id="tt8" layout="block" showDelay="2000">
+                        <span ><b>Display Privacy Policy Window</b></span>
+                    </r:tooltip>
+                    <r:componentControl target="privacy" operation="show">
+                        <a4j:param noEscape="true" value="event" />
+                        <r:hashParam>
+                            <f:param name="width" value="500" />
+                            <f:param name="height" value="300" />
+                            <f:param name="minWidth" value="300" />
+                            <f:param name="minHeight" value="150" />
+                            <a4j:param noEscape="true" name="left" value="(jQuery(window).width()/2)-250" />
+                            <a4j:param noEscape="true" name="top" value="(jQuery(window).height()/2)-150" />
+                        </r:hashParam>
+                    </r:componentControl>
+                    
+                </a4j:commandLink>                        
+                <h:outputText value=" | " style="color: white"/>
+                <a4j:commandLink value="Refund" style="color: white" disabled="true"> 
+                    <r:tooltip id="tt9" layout="block" showDelay="2000">
+                        <span ><b>Display Refund Policy Window</b></span>
+                    </r:tooltip>
+                    <r:componentControl target="refund" operation="show">
+                        <a4j:param noEscape="true" value="event" />
+                        <r:hashParam>
+                            <f:param name="width" value="500" />
+                            <f:param name="height" value="300" />
+                            <f:param name="minWidth" value="300" />
+                            <f:param name="minHeight" value="150" />
+                            <a4j:param noEscape="true" name="left" value="(jQuery(window).width()/2)-250" />
+                            <a4j:param noEscape="true" name="top" value="(jQuery(window).height()/2)-150" />
+                        </r:hashParam>
+                    </r:componentControl>
+                    
+                </a4j:commandLink>                        
+
+                <h:outputText value=" | " style="color: white"/>
+                <a4j:commandLink value="Disclaimer" style="color: white" > 
+                    <r:tooltip id="tt10" layout="block" showDelay="2000">
+                        <span ><b>Display Disclaimer Window</b></span>
+                    </r:tooltip>
+                    <r:componentControl target="disclaimer" operation="show">
+                        <a4j:param noEscape="true" value="event" />
+                        <r:hashParam>
+                            <f:param name="width" value="500" />
+                            <f:param name="height" value="300" />
+                            <f:param name="minWidth" value="300" />
+                            <f:param name="minHeight" value="150" />
+                            <a4j:param noEscape="true" name="left" value="(jQuery(window).width()/2)-250" />
+                            <a4j:param noEscape="true" name="top" value="(jQuery(window).height()/2)-150" />
+                        </r:hashParam>
+                    </r:componentControl>
+                    
+                </a4j:commandLink>                        
+
+            </h:panelGroup>
+            <h:panelGroup style="color: black; font-size: smaller">
+                <h:outputText value="#{custNavigation.copyRight}" />
+                <h:outputLink value="http://www.free-css-templates.com">
+                    <h:outputText value=" Free CSS Templates, " style="color: black"/>
+                </h:outputLink>
+            </h:panelGroup>
+        </h:panelGrid>
+
+
+
+        <r:popupPanel id="terms" modal="true" resizeable="false">
+            <f:facet name="header">
+                <h:outputText value="Terms and Conditions" style="font-size: 14px; font-weight: bold"/>
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/Close-icon.png"
+                                style="cursor:pointer"
+                                onclick="#{r:component('terms')}.hide();
+                        return false;" />
+            </f:facet>
+            <r:panel id = "termspanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                <h:outputText
+                    value="#{fn:replace(custNavigation.terms,'\\n','&lt;br/&gt;')}" escape="false" />
+            </r:panel>
+        </r:popupPanel>
+
+        <r:popupPanel id="privacy" modal="true" resizeable="false">
+            <f:facet name="header">
+                <h:outputText value="Privacy Policy" style="font-size: 14px; font-weight: bold"/>
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/Close-icon.png"
+                                style="cursor:pointer"
+                                onclick="#{r:component('privacy')}.hide();
+                        return false;" />
+            </f:facet>
+            <r:panel id = "privacypanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                <h:outputText
+                    value="#{fn:replace(custNavigation.privacy,'\\n','&lt;br/&gt;')}" escape="false" />
+            </r:panel>
+        </r:popupPanel>
+
+
+        <r:popupPanel id="refund" modal="true" resizeable="false">
+            <f:facet name="header">
+                <h:outputText value="Refund Policy" style="font-size: 14px; font-weight: bold"/>
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/Close-icon.png"
+                                style="cursor:pointer"
+                                onclick="#{r:component('refund')}.hide();
+                        return false;" />
+            </f:facet>
+            <r:panel id = "refundpanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                <h:outputText
+                    value="#{fn:replace(custNavigation.refund,'\\n','&lt;br/&gt;')}" escape="false" />
+            </r:panel>
+        </r:popupPanel>
+
+
+
+        <r:popupPanel id="disclaimer" modal="true" width="400" height="500" resizeable="false">
+            <f:facet name="header">
+                <h:outputText value="Disclaimer Policy" style="font-size: 14px; font-weight: bold"/>
+            </f:facet>
+            <f:facet name="controls">
+                <h:graphicImage value="/images/Close-icon.png"
+                                style="cursor:pointer"
+                                onclick="#{r:component('disclaimer')}.hide();
+                        return false;" />
+            </f:facet>
+            <r:panel id = "disclaimerpanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                <h:outputText
+                    value="#{fn:replace(custNavigation.disclaimer,'\\n','&lt;br/&gt;')}" escape="false" />
+            </r:panel>
+        </r:popupPanel>
+
+    </ui:composition>        
+</html>

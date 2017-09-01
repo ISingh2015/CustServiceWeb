@@ -1,0 +1,20 @@
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://java.sun.com/jsf/facelets" 
+       xmlns:h="http://java.sun.com/jsf/html" 
+       xmlns:r="http://richfaces.org/rich"
+       xmlns:a4j="http://richfaces.org/a4j">
+
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <r:panel id = "openimagepanel" bodyClass="rich-laguna-panel-no-header" style="border:none;">
+                    <h:panelGrid style="display:block">
+                        <h:graphicImage id = "image1" value="#{custNavigation.imageFileToDisplay}" style="width: 100%;height:auto" /> 
+                    </h:panelGrid>
+                    <h:commandLink value="Previous Page" action="#{custNavigation.inventoryPage()}" style="padding-top:5%"/>
+                </r:panel>
+            </h:form>                
+        </ui:define>
+    </ui:composition>
+
+</html>

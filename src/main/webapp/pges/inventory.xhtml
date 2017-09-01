@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"       
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:a4j="http://richfaces.org/a4j"      
+      xmlns:r="http://richfaces.org/rich"      
+      >
+    <ui:composition template="/default.xhtml">
+        <ui:define name="content">
+            <r:panel id = "inventorypanel" bodyClass="rich-laguna-panel-no-header" style="border:none">
+                <h:form>
+                    <h:panelGrid columns="1" styleClass="custcommoncontent">
+                        <h:panelGrid columns="2">
+                            <f:facet name="header">
+                                <h:outputLabel value="Elegant Inventory Module Screens" />
+                            </f:facet>s
+                            <h:dataTable var="invImageAndDescr" value="#{custNavigation.invImageAndDescrList}"  >
+                                <h:column>
+                                    <a4j:commandLink action="#{custNavigation.openImage}" >
+                                        <f:param name="fileName"  value="#{invImageAndDescr.name}"/>
+                                        <h:graphicImage url="#{invImageAndDescr.name}" style="width:100%;height:auto;"/>
+                                        <r:tooltip id="tt6" layout="block" showDelay="2000">
+                                            <span ><b>Click to Enlarge</b></span>
+                                        </r:tooltip>
+                                    </a4j:commandLink>        
+                                </h:column>
+                                <h:column>
+                                    <h:outputText escape="false" value="#{invImageAndDescr.descr}" />                            
+                                </h:column>
+                            </h:dataTable>
+
+                        </h:panelGrid>
+                    </h:panelGrid>                
+                </h:form>
+            </r:panel>            
+        </ui:define>
+    </ui:composition>
+</html>
