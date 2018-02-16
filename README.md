@@ -5,10 +5,10 @@ Configuration of the DAO, Services and HESSIAN exporter is XML based. JUNIT test
 
 The Web Application provides pages highlighting the functional details of the Order Management SWING Client. Provides Images of the SWING Client for user  awarness, before downloading the Swing Client.
 
-The downloadable setup is a Windows installable EXE file for Windows Operating system. To Download the setup, one needs create a personal LOGIN (possible using the SWING Client) or by REGISTERING through this Web Application. Once registered user gets an activation CODE in an  email provided at the time of REGISTRATION, User has to provide this CODE to activate HIS/HER login and start using the downloaded SWING Client.
+The downloadable setup is a Windows installable EXE file for Windows Operating system. To Download the setup, one needs create a personal Login by REGISTERING through this Web Application. Once registered user gets an activation CODE in an  email provided at the time of REGISTRATION, User has to provide this CODE to activate his/her login and start using the downloaded SWING Client.
 
-The REGISTRATION process using the WEB application does not require activation and it is a public. If the USER successfully Logins in to the ORDER PROCCESSING system  he/she can download the SWING client and continue to work with the  Order processing system SWING application modules using this login.
+Onces downloaded the Swing Client can create other new USER(s) which does not requires activation as it is not public. The Database of the SWING client (Order Processing) is private and not downloadable. If the USER successfully Logs in to the ORDER PROCCESSING system  he/she can download the SWING client and continue to work with the  Order processing system SWING application modules using the created login.
+
+The login, web pages and authorisation is managed with SPRING-SECURITY backed by MS-SQL Server Database storing the user credentails.
 
 Other details of the Web application are FEATURES and BENEFITS Page which provide a detailed view of the SWING client Order Processing System.
-
-
