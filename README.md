@@ -8,4 +8,4 @@ The download page allows download of the CRM windows installable Setup one needs
 
 Other details of the Web application are PRICING Page which provide monthly, quaterly or yearly subscriptions for enterprise or single user access.
 
-For building the Web application please visit [CRM Parent Module](https://github.com/ISingh2015/Custparent)  and [CRM Build](https://github.com/ISingh2015/CustBuild) 
+For building the Web application please visit [CRM Parent Module](https://github.com/ISingh2015/Custparent)  and [CRM Build Module](https://github.com/ISingh2015/CustBuild) 
